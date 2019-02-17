@@ -1546,15 +1546,15 @@ class BQEngineSpec(BaseEngineSpec):
     arraysize = 5000
 
     time_grain_functions = {
-        None: '{col}',
-        'PT1S': 'TIMESTAMP_TRUNC({col}, SECOND)',
-        'PT1M': 'TIMESTAMP_TRUNC({col}, MINUTE)',
-        'PT1H': 'TIMESTAMP_TRUNC({col}, HOUR)',
-        'P1D': 'TIMESTAMP_TRUNC({col}, DAY)',
-        'P1W': 'TIMESTAMP_TRUNC({col}, WEEK)',
-        'P1M': 'TIMESTAMP_TRUNC({col}, MONTH)',
-        'P0.25Y': 'TIMESTAMP_TRUNC({col}, QUARTER)',
-        'P1Y': 'TIMESTAMP_TRUNC({col}, YEAR)',
+        None: 'CAST({col} AS TIMESTAMP)',
+        'PT1S': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), SECOND)',
+        'PT1M': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), MINUTE)',
+        'PT1H': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), HOUR)',
+        'P1D': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), DAY)',
+        'P1W': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), WEEK)',
+        'P1M': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), MONTH)',
+        'P0.25Y': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), QUARTER)',
+        'P1Y': 'TIMESTAMP_TRUNC(CAST({col} AS TIMESTAMP), YEAR)',
     }
 
     @classmethod
